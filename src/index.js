@@ -1,6 +1,6 @@
 import './style.css';
-import { getEbooksList } from './itunes-api.js';
-import { renderMainList } from './render.js';
+import { getEbooksList } from './modules/itunes-api.js';
+import { renderMainList } from './modules/render.js';
 
 window.addEventListener('load', async () => {
   let ebookList = await getEbooksList();

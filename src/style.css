@@ -89,8 +89,9 @@ div {
 
 .content-right {
   display: flex;
-  gap: 2vw;
+  gap: 1vw;
   justify-content: center;
+  margin-top: 2vh;
 }
 
 .content-left {
@@ -99,4 +100,42 @@ div {
   align-items: center;
   align-content: center;
   text-align: center;
+}
+
+.ebook-list-title {
+  font-size: 4vh;
+}
+
+.ebook-list-author {
+  font-size: 2.5vh;
+  color: darkgrey;
+  font-style: italic;
+}
+
+.ebook-like-icon {
+  color: red;
+}
+
+.ebook-like-count {
+  font-size: 2vh;
+}
+
+.contact-button-div {
+  margin-top: 2vh;
+  text-align: center;
+}
+
+.contact-button {
+  padding: 1vh 3vh;
+  background-color: white;
+  border: 2px solid tomato;
+  border-radius: 4px;
+  font-size: 2vh;
+}
+
+.contact-button:hover {
+  background-color: tomato;
+  border: 3px solid darkgrey;
+  color: white;
+  border-radius: 4px;
 }

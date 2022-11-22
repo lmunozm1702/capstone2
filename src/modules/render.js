@@ -1,3 +1,4 @@
+import { showPopup } from './showPopup';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
@@ -34,7 +35,7 @@ const renderMainList = (ebookList) => {
 
     const ebookListAuthor = document.createElement('div');
     ebookListAuthor.className = 'ebook-list-author';
-    ebookListAuthor.textContent = ebook.artistName;
+    ebookListAuthor.textContent = `by ${ebook.artistName}`;
     ebookContentLeft.appendChild(ebookListAuthor);
 
     const ebookContentRight = document.createElement('div');
@@ -54,6 +55,18 @@ const renderMainList = (ebookList) => {
     ebookLikeCount.className = 'ebook-like-count';
     ebookLikeCount.textContent = `${LIKES_COUNT} likes`;
     ebookContentRight.appendChild(ebookLikeCount);
+
+    const contactButtonDiv = document.createElement('div');
+    contactButtonDiv.className = 'contact-button-div';
+    ebookItem.appendChild(contactButtonDiv);
+
+    const contactButton = document.createElement('button');
+    contactButton.classList = "contact-button";
+    contactButton.onclick = () => {
+      showPopup(ebook);
+    }
+    contactButton.textContent = 'Contacts';
+    contactButtonDiv.appendChild(contactButton);
   });
 }
 
