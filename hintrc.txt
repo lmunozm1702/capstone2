@@ -1,0 +1,5 @@
+file:///home/lmunozm1702/Repos/capstone2/dist/index.html
+Warning  Could not get results from HTML checker for 'file:///home/lmunozm1702/Repos/capstone2/dist/index.html'. Error: 'Unexpected token '<', "<!DOCTYPE "... is not valid JSON'.  html-checker
+× Found 0 errors, 1 warning, 0 hints and 0 informations
+
+× Found a total of 0 errors, 1 warning, 0 hints and 0 informations
