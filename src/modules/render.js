@@ -63,7 +63,7 @@ const renderMainList = (ebookList) => {
     contactButtonDiv.className = 'contact-button-div';
     contentDiv.appendChild(contactButtonDiv);
 
-    const popupSection = document.querySelector('.popup-section')
+    const popupSection = document.querySelector('.popup-section');
     const popup = document.querySelector('.popup');
 
     const contactButton = document.createElement('button');
@@ -71,7 +71,7 @@ const renderMainList = (ebookList) => {
     contactButton.addEventListener('click', async (e) => {
       e.preventDefault();
       popupSection.classList.toggle('hide');
-      popup.insertAdjacentHTML('beforeend', showPopup(ebook))
+      popup.insertAdjacentHTML('beforeend', showPopup(ebook));
       const crossIcon = document.querySelector('.cross-icon');
       crossIcon.addEventListener('click', () => {
         popupSection.classList.toggle('hide');

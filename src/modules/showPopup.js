@@ -14,8 +14,8 @@ const showPopup = (ebook) => {
   <div class="description">
     <p><b>Description:</b> ${ebook.description}</p>
   </div>
-</div>`
-return popup
+  </div>`;
+  return popup;
 };
 
 export default showPopup;
