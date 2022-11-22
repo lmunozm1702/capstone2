@@ -48,6 +48,14 @@ h5 {
   font-size: 0.8vw;
 }
 
+img {
+  /* width: 100%; */
+}
+
+div {
+  /*border: 1px solid green;*/
+}
+
 #footer-div {
   display: flex;
   gap: 1vw;
@@ -64,4 +72,31 @@ h5 {
   width: 100%;
   color: darkgray;
   align-self: flex-end;
+}
+
+.ebook-item {
+  margin: 5vw;
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid darkgray;
+  border-radius: 8px;
+}
+
+.ebook-image-div {
+  align-self: center;
+}
+
+.content-right {
+  display: flex;
+  gap: 2vw;
+  justify-content: center;
+}
+
+.content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }

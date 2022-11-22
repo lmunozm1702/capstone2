@@ -8,6 +8,9 @@
     "start": "webpack serve --open",
     "test": "jest"
   },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lmunozm1702/capstone2.git"
@@ -30,6 +33,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
     "lodash": "^4.17.21"
   }
 }
