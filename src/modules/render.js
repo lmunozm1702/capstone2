@@ -24,9 +24,13 @@ const renderMainList = (ebookList) => {
     ebookImageDiv.appendChild(ebookImage);
     ebookItem.appendChild(ebookImageDiv);
 
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'content-div';
+    ebookItem.appendChild(contentDiv);
+
     const ebookContentLeft = document.createElement('div')
     ebookContentLeft.className = "content-left";
-    ebookItem.appendChild(ebookContentLeft);
+    contentDiv.appendChild(ebookContentLeft);
 
     const ebookListTitle = document.createElement('div');
     ebookListTitle.className = 'ebook-list-title';
@@ -40,7 +44,7 @@ const renderMainList = (ebookList) => {
 
     const ebookContentRight = document.createElement('div');
     ebookContentRight.className = 'content-right';
-    ebookItem.appendChild(ebookContentRight);
+    contentDiv.appendChild(ebookContentRight);
 
     const ebookLikeIcon = document.createElement('div');
     ebookLikeIcon.className = 'ebook-like-icon';
@@ -58,14 +62,14 @@ const renderMainList = (ebookList) => {
 
     const contactButtonDiv = document.createElement('div');
     contactButtonDiv.className = 'contact-button-div';
-    ebookItem.appendChild(contactButtonDiv);
+    contentDiv.appendChild(contactButtonDiv);
 
     const contactButton = document.createElement('button');
     contactButton.classList = "contact-button";
     contactButton.onclick = () => {
       showPopup(ebook);
     }
-    contactButton.textContent = 'Contacts';
+    contactButton.textContent = 'Comments';
     contactButtonDiv.appendChild(contactButton);
   });
 }
