@@ -1,14 +1,13 @@
 import './style.css';
-import { getEbooksList } from './modules/itunes-api.js';
-import { renderMainList } from './modules/render.js';
+import getEbooksList from './modules/itunes-api.js';
+import renderMainList from './modules/render.js';
 
 window.addEventListener('load', async () => {
-  let ebookList = await getEbooksList();
+  const ebookList = await getEbooksList();
   if (ebookList) {
-    console.log("main List:", ebookList);
     renderMainList(ebookList);
+    return true;
   }
-  else {
-    console.error("Main List:", ebookList);
-  }
-})
+  // console.error('Main List:', ebookList);
+  return false;
+});

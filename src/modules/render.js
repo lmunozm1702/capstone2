@@ -1,4 +1,4 @@
-import { showPopup } from './showPopup';
+import showPopup from './showPopup.js';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
@@ -7,9 +7,8 @@ import '@fortawesome/fontawesome-free/js/brands';
 const LIKES_COUNT = 5;
 
 const renderMainList = (ebookList) => {
-  console.log("Render Main List", ebookList);
   const ebookListDiv = document.querySelector('#ebook-list');
-  ebookList.results.forEach(ebook => {
+  ebookList.results.forEach((ebook) => {
     const ebookItem = document.createElement('div');
     ebookItem.className = 'ebook-item';
     ebookListDiv.appendChild(ebookItem);
@@ -28,8 +27,8 @@ const renderMainList = (ebookList) => {
     contentDiv.className = 'content-div';
     ebookItem.appendChild(contentDiv);
 
-    const ebookContentLeft = document.createElement('div')
-    ebookContentLeft.className = "content-left";
+    const ebookContentLeft = document.createElement('div');
+    ebookContentLeft.className = 'content-left';
     contentDiv.appendChild(ebookContentLeft);
 
     const ebookListTitle = document.createElement('div');
@@ -65,13 +64,13 @@ const renderMainList = (ebookList) => {
     contentDiv.appendChild(contactButtonDiv);
 
     const contactButton = document.createElement('button');
-    contactButton.classList = "contact-button";
+    contactButton.classList = 'contact-button';
     contactButton.onclick = () => {
       showPopup(ebook);
-    }
+    };
     contactButton.textContent = 'Comments';
     contactButtonDiv.appendChild(contactButton);
   });
-}
+};
 
-export { renderMainList };
+export default renderMainList;

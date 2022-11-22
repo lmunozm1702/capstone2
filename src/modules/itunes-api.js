@@ -1,7 +1,6 @@
 const API_URL = 'https://itunes.apple.com/search?';
 
 const getEbooksList = async () => {
-  console.log(`${API_URL}?term=null&entity=ebook`);
   const response = await fetch(`${API_URL}term=null&entity=ebook`, {
     method: 'GET',
     headers: {
@@ -14,8 +13,8 @@ const getEbooksList = async () => {
     const result = await response.json();
     return (result);
   }
-  console.error('GET: [ /scores/ ]', response);
+  // console.error('GET: [ /scores/ ]', response);
   return (false);
 };
 
-export { getEbooksList };
+export default getEbooksList;

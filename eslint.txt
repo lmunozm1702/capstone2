@@ -1,0 +1,22 @@
+
+/home/lmunozm1702/Repos/capstone2/src/index.js
+  10:5  warning  Unexpected console statement  no-console
+
+/home/lmunozm1702/Repos/capstone2/src/modules/itunes-api.js
+  16:3   warning  Unexpected console statement  no-console
+  20:10  error    Prefer default export         import/prefer-default-export
+
+/home/lmunozm1702/Repos/capstone2/src/modules/render.js
+   1:27  warning  Missing file extension "js" for "./showPopup"                                   import/extensions
+   2:8   warning  Missing file extension "js" for "@fortawesome/fontawesome-free/js/fontawesome"  import/extensions
+   3:8   warning  Missing file extension "js" for "@fortawesome/fontawesome-free/js/solid"        import/extensions
+   4:8   warning  Missing file extension "js" for "@fortawesome/fontawesome-free/js/regular"      import/extensions
+   5:8   warning  Missing file extension "js" for "@fortawesome/fontawesome-free/js/brands"       import/extensions
+  76:10  error    Prefer default export                                                           import/prefer-default-export
+
+/home/lmunozm1702/Repos/capstone2/src/modules/showPopup.js
+  2:3   warning  Unexpected console statement  no-console
+  5:10  error    Prefer default export         import/prefer-default-export
+
+✖ 11 problems (3 errors, 8 warnings)
+

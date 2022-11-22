@@ -1,5 +1,3 @@
-const showPopup = (ebook) => {
-  console.log('showPopup: ', ebook);
-}
+const showPopup = (ebook) => ebook;
 
-export { showPopup };
+export default showPopup;
