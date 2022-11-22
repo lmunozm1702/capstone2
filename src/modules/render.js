@@ -63,11 +63,21 @@ const renderMainList = (ebookList) => {
     contactButtonDiv.className = 'contact-button-div';
     contentDiv.appendChild(contactButtonDiv);
 
+    const popupSection = document.querySelector('.popup-section')
+    const popup = document.querySelector('.popup');
+
     const contactButton = document.createElement('button');
     contactButton.classList = 'contact-button';
-    contactButton.onclick = () => {
-      showPopup(ebook);
-    };
+    contactButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      popupSection.classList.toggle('hide');
+      popup.insertAdjacentHTML('beforeend', showPopup(ebook))
+      const crossIcon = document.querySelector('.cross-icon');
+      crossIcon.addEventListener('click', () => {
+        popupSection.classList.toggle('hide');
+        popup.innerHTML = '';
+      });
+    });
     contactButton.textContent = 'Comments';
     contactButtonDiv.appendChild(contactButton);
   });
