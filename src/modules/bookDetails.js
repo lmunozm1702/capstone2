@@ -1,4 +1,4 @@
-const showPopup = (ebook) => {
+const bookDetails = (ebook) => {
   const popup = `<div class="item-details">
   <div class="cross-icon">
     <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="">
@@ -16,4 +16,4 @@ const showPopup = (ebook) => {
   return popup;
 };
 
-export default showPopup;
+export default bookDetails;

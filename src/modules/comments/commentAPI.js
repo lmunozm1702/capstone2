@@ -5,7 +5,7 @@ class Comment {
   }
 
   postComment = async (itemId, name, message) => {
-    const response = await fetch(`${this.url + this.commentId}/comments`, {
+    const response = await fetch(`${this.url}${this.commentId}/comments`, {
       method: 'POST',
       body: JSON.stringify({
         item_id: itemId,
