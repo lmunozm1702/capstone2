@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import getAppLikes from './involvment-api.js';
 
 class Likes {
@@ -6,9 +7,15 @@ class Likes {
   }
 
   async getLikes() {
-    const likesFromApi = await getAppLikes();
-    console.log('getLikes:', likesFromApi);
-    return this.likesList;
+    this.likesList = await getAppLikes();
+  }
+
+  getEbookLikes = (ebookId) => {
+    const result = (_.find(this.likesList, ['item_id', ebookId]));
+    if (!result) {
+      return 0;
+    }
+    return result.likes;
   }
 }
 

@@ -1,8 +1,5 @@
 const API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
-// with content
-const APP_ID = 'sSs9ooQfU1W8OFSGcB9V';
-// without content
-//const APP_ID = 'I9KopyiRu6EGqX9RJk9q';
+const APP_ID = 'I9KopyiRu6EGqX9RJk9q';
 
 const getAppLikes = async () => {
   const response = await fetch(`${API_URL}/apps/${APP_ID}/likes/`, {
@@ -22,7 +19,6 @@ const getAppLikes = async () => {
       return (result);
     }
   }
-  // console.error('GET: [ /scores/ ]', response);
   return (false);
 };
 

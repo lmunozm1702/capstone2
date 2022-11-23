@@ -1,12 +1,10 @@
 import showPopup from './showPopup.js';
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
-import '@fortawesome/fontawesome-free/js/brands';
+import '@fortawesome/fontawesome-free/js/fontawesome.js';
+import '@fortawesome/fontawesome-free/js/solid.js';
+import '@fortawesome/fontawesome-free/js/regular.js';
+import '@fortawesome/fontawesome-free/js/brands.js';
 
-const LIKES_COUNT = 5;
-
-const renderMainList = (ebookList) => {
+const renderMainList = (ebookList, likesList) => {
   const ebookListDiv = document.querySelector('#ebook-list');
   ebookList.results.forEach((ebook) => {
     const ebookItem = document.createElement('div');
@@ -56,7 +54,7 @@ const renderMainList = (ebookList) => {
 
     const ebookLikeCount = document.createElement('div');
     ebookLikeCount.className = 'ebook-like-count';
-    ebookLikeCount.textContent = `${LIKES_COUNT} likes`;
+    ebookLikeCount.textContent = `${likesList.getEbookLikes(ebook.trackId.toString())} likes`;
     ebookContentRight.appendChild(ebookLikeCount);
 
     const contactButtonDiv = document.createElement('div');

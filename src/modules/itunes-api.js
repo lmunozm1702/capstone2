@@ -13,7 +13,6 @@ const getEbooksList = async () => {
     const result = await response.json();
     return (result);
   }
-  // console.error('GET: [ /scores/ ]', response);
   return (false);
 };
 
