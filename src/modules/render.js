@@ -7,6 +7,18 @@ import { postComment, getComment } from './involvment-api.js';
 
 const LIKES_COUNT = 5;
 
+const showComments = (commentData) => {
+  let comments = '';
+  commentData.forEach((element) => {
+    comments += `<div class="comment-container">
+    <p class="comment-date">${element.creation_date}</p>
+    <p class="comment-name">${element.username}: </p>
+    <p class="comment-content">${element.comment}</p>
+  </div>`;
+  });
+  return comments;
+};
+
 const renderMainList = (ebookList) => {
   const ebookListDiv = document.querySelector('#ebook-list');
   ebookList.results.forEach((ebook) => {
@@ -92,8 +104,8 @@ const renderMainList = (ebookList) => {
 
       const crossIcon = document.querySelector('.cross-icon');
       crossIcon.addEventListener('click', () => {
-      popupSection.classList.toggle('hide');
-      popup.innerHTML = '';
+        popupSection.classList.toggle('hide');
+        popup.innerHTML = '';
       });
 
       // comments section
@@ -134,18 +146,6 @@ const renderMainList = (ebookList) => {
     commentButton.textContent = 'Comments';
     commentButtonDiv.appendChild(commentButton);
   });
-};
-
-const showComments = (commentData) => {
-  let comments = '';
-  commentData.forEach((element) => {
-    comments += `<div class="comment-container">
-    <p class="comment-date">${element.creation_date}</p>
-    <p class="comment-name">${element.username}: </p>
-    <p class="comment-content">${element.comment}</p>
-  </div>`;
-  });
-  return comments;
 };
 
 export default renderMainList;

@@ -28,9 +28,7 @@ const getComment = async (itemId) => {
     const responseJSON = await response.json();
     return responseJSON;
   }
-  else {
-    return [];
-  }
+  return [];
 };
 
-export {postComment, getComment};
+export { postComment, getComment };

@@ -206,6 +206,10 @@ h5 {
   font-size: 2vh;
 }
 
+.btn-comment {
+  width: 100px;
+}
+
 .contact-button:hover,
 .btn-comment:hover {
   background-color: tomato;
@@ -324,7 +328,7 @@ h5 {
 
 /* add comment */
 
-.add-comment{
+.add-comment {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -348,10 +352,6 @@ input:focus,
 textarea:focus {
   border: none;
   outline: 2px solid tomato;
-}
-
-.btn-comment {
-  width: 100px;
 }
 
 @media only screen and (max-width: 768px) {
