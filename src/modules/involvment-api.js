@@ -22,14 +22,18 @@ const getAppLikes = async () => {
   return (false);
 };
 
-const setAppLike = async () => {
-  /*
+const setAppLike = async (trackId) => {
   const response = await fetch(`${API_URL}/apps/${APP_ID}/likes/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'access-control-allow-origin': '*',
-      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'false',
+      Accept: '*',
+    },
+    mode: 'no-cors',
+    body: {
+      item_id: `${trackId.toString()}`,
     },
   });
   if (response.ok) {
@@ -42,7 +46,6 @@ const setAppLike = async () => {
     }
   }
   return (false);
-*/
-}
+};
 
-export default getAppLikes;
+export { getAppLikes, setAppLike };

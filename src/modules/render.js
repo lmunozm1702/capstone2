@@ -43,18 +43,31 @@ const renderMainList = (ebookList, likesList) => {
     ebookContentRight.className = 'content-right';
     contentDiv.appendChild(ebookContentRight);
 
+    const trackId = ebook.trackId.toString();
+
     const ebookLikeIcon = document.createElement('div');
-    ebookLikeIcon.className = 'ebook-like-icon';
+    ebookLikeIcon.className = '';
+    ebookLikeIcon.onclick = () => {
+      likesList.addLike(trackId);
+    };
     ebookContentRight.appendChild(ebookLikeIcon);
 
+    const likesCount = likesList.getEbookLikes(trackId);
     const heartIcon = document.createElement('i');
-    heartIcon.className = 'heart-icon';
-    heartIcon.className = 'fa-solid fa-heart ';
+    let likesLabel = 'likes.';
+    if (likesCount === 0) {
+      heartIcon.className = 'heart-icon-grey fa-solid fa-heart';
+    } else {
+      heartIcon.className = 'heart-icon fa-solid fa-heart';
+      if (likesCount === 1) {
+        likesLabel = 'like.';
+      }
+    }
     ebookLikeIcon.appendChild(heartIcon);
 
     const ebookLikeCount = document.createElement('div');
     ebookLikeCount.className = 'ebook-like-count';
-    ebookLikeCount.textContent = `${likesList.getEbookLikes(ebook.trackId.toString())} likes`;
+    ebookLikeCount.textContent = `${likesCount} ${likesLabel}`;
     ebookContentRight.appendChild(ebookLikeCount);
 
     const contactButtonDiv = document.createElement('div');

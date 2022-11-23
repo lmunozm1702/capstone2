@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import getAppLikes from './involvment-api.js';
+import { getAppLikes, setAppLike } from './involvment-api.js';
 
 class Likes {
   constructor(likesList = []) {
@@ -16,6 +16,11 @@ class Likes {
       return 0;
     }
     return result.likes;
+  }
+
+  addLike = async (trackId) => {
+    console.log(trackId);
+    await setAppLike(trackId);
   }
 }
 
