@@ -197,7 +197,8 @@ h5 {
   }
 }
 
-.contact-button {
+.contact-button,
+.btn-comment {
   padding: 1vh 3vh;
   background-color: white;
   border: 2px solid tomato;
@@ -205,11 +206,17 @@ h5 {
   font-size: 2vh;
 }
 
-.contact-button:hover {
+.btn-comment {
+  width: 100px;
+}
+
+.contact-button:hover,
+.btn-comment:hover {
   background-color: tomato;
   border: 3px solid darkgrey;
   color: white;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 /* @media only screen and (min-width: 768px) {
@@ -241,11 +248,12 @@ h5 {
   margin: 60px auto;
   background-color: #fff;
   border: 1px solid grey;
+  border-radius: 8px;
   padding: 16px 24px;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 30px;
 }
 
 .item-details {
@@ -272,7 +280,9 @@ h5 {
 
 .book-detail {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 40px;
 }
 
 .hide {
@@ -290,10 +300,62 @@ h5 {
 
 .book-img {
   width: 80%;
-  height: 400px;
+  height: 450px;
   margin: 0 auto;
 }
 
-.description {
-  padding: 0 35px;
+/* comments details */
+
+.comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-container {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* add comment */
+
+.add-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+form {
+  width: 100%;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+input,
+textarea {
+  padding: 8px 10px;
+}
+
+input:focus,
+textarea:focus {
+  border: none;
+  outline: 2px solid tomato;
+}
+
+@media only screen and (max-width: 768px) {
+  .popup {
+    width: 80%;
+  }
 }
