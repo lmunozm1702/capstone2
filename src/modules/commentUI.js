@@ -36,8 +36,6 @@ class CommentUI {
   </div>`
   return comment;
   };
-
-  
 }
 
 export default CommentUI;

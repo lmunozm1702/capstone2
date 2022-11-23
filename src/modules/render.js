@@ -1,7 +1,9 @@
 import showPopup from './showPopup.js';
-import Comment from './commentAPI.js';
-import CommentUI from './commentUI.js'; 
-import commentsCounter from './commentsCounter.js';
+import Comment from './comments/commentAPI.js'; 
+import addComment from './comments/addComment.js';
+import {showComments, commentsContainer} from './comments/commentsBox.js'
+import commentHeader from './comments/commentHeader.js';
+import commentsCounter from './comments/commentsCounter.js';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
@@ -85,15 +87,15 @@ const renderMainList = (ebookList) => {
 
       // display comments
       const commentsArray = await comment.getComment(ebook.trackId);
-      popup.insertAdjacentHTML('beforeend', CommentUI.commentSection());
-      popup.insertAdjacentHTML('beforeend', CommentUI.commentsContainer(commentsArray)); // displaying comments list
+      popup.insertAdjacentHTML('beforeend', commentHeader());
+      popup.insertAdjacentHTML('beforeend', commentsContainer(commentsArray)); // displaying comments list
 
       const commentList = document.querySelector('.comment-list');
       const counterElement = document.querySelector('.comments-count');
       counterElement.innerHTML = commentsCounter();
 
       // add comments
-      popup.insertAdjacentHTML('beforeend', CommentUI.addComment());
+      popup.insertAdjacentHTML('beforeend', addComment());
 
       const userName = document.getElementById('user-name');
       const userComment = document.getElementById('user-comment');
@@ -103,7 +105,7 @@ const renderMainList = (ebookList) => {
         e.preventDefault();
         await comment.postComment(ebook.trackId, userName.value, userComment.value);
         const commentsArray = await comment.getComment(ebook.trackId);
-        commentList.innerHTML = CommentUI.showComments(commentsArray);
+        commentList.innerHTML = showComments(commentsArray);
         counterElement.innerHTML = commentsCounter();
         userName.value = '';
         userComment.value = '';

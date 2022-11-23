@@ -21,7 +21,7 @@ class Comment {
   }
 
   getComment = async (itemId) => {
-    const response = await fetch(`${this.url + this.commentId}/comments?item_id=${itemId}`, {
+    const response = await fetch(`${this.url}${this.commentId}/comments?item_id=${itemId}`, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
