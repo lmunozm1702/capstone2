@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import commentsCounter from './commentsCounter.js';
-import { postComment, getComment } from './involvement-api.js';
+import { postComment, getComment } from './involvment-api.js';
 
 const LIKES_COUNT = 5;
 
