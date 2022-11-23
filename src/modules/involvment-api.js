@@ -1,5 +1,5 @@
 const API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
-const APP_ID = 'I9KopyiRu6EGqX9RJk9q';
+const APP_ID = 'dDe9EIltLKoVUBX3nnKj';
 
 const getAppLikes = async () => {
   const response = await fetch(`${API_URL}/apps/${APP_ID}/likes/`, {
@@ -27,14 +27,12 @@ const setAppLike = async (trackId) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': 'false',
-      Accept: '*',
+      'Access-Control-Allow-Origin': 'ORIGIN',
+      'Access-Control-Allow-Credentials': 'true',
     },
-    mode: 'no-cors',
-    body: {
+    body: JSON.stringify({
       item_id: `${trackId.toString()}`,
-    },
+    }),
   });
   if (response.ok) {
     try {

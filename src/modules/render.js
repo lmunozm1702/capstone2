@@ -44,29 +44,32 @@ const renderMainList = (ebookList, likesList) => {
     contentDiv.appendChild(ebookContentRight);
 
     const trackId = ebook.trackId.toString();
+    const likesCount = likesList.getEbookLikes(trackId);
 
     const ebookLikeIcon = document.createElement('div');
-    ebookLikeIcon.className = '';
+    if (likesCount > 0) {
+      ebookLikeIcon.className = 'heart-icon';
+    } else {
+      ebookLikeIcon.className = 'heart-icon-grey';
+    }
     ebookLikeIcon.onclick = () => {
       likesList.addLike(trackId);
     };
+    ebookLikeIcon.id = `ebook-like-${trackId}`;
     ebookContentRight.appendChild(ebookLikeIcon);
 
-    const likesCount = likesList.getEbookLikes(trackId);
     const heartIcon = document.createElement('i');
-    let likesLabel = 'likes.';
-    if (likesCount === 0) {
-      heartIcon.className = 'heart-icon-grey fa-solid fa-heart';
-    } else {
-      heartIcon.className = 'heart-icon fa-solid fa-heart';
-      if (likesCount === 1) {
-        likesLabel = 'like.';
-      }
-    }
+    heartIcon.className = ' fa-solid fa-heart';
+    heartIcon.id = `heart-icon-${trackId}`;
     ebookLikeIcon.appendChild(heartIcon);
 
     const ebookLikeCount = document.createElement('div');
+    let likesLabel = 'likes.';
+    if (likesCount === '1') {
+      likesLabel = 'like.';
+    }
     ebookLikeCount.className = 'ebook-like-count';
+    ebookLikeCount.id = `like-count-${trackId}`;
     ebookLikeCount.textContent = `${likesCount} ${likesLabel}`;
     ebookContentRight.appendChild(ebookLikeCount);
 
@@ -94,4 +97,23 @@ const renderMainList = (ebookList, likesList) => {
   });
 };
 
-export default renderMainList;
+const renderNewLike = (trackId) => {
+  const likeCount = document.querySelector(`#like-count-${trackId}`);
+  const heartIcon = document.querySelector(`#ebook-like-${trackId}`);
+  let likeCountValue = '0';
+  let likesText;
+  [likeCountValue, likesText] = likeCount.textContent.split(' ');
+
+  likesText = 'likes.';
+  if (Number(likeCountValue) === '0') {
+    heartIcon.className = 'heart-icon-grey';
+  } else {
+    heartIcon.className = 'heart-icon';
+    if (likeCountValue === '0') {
+      likesText = 'like.';
+    }
+  }
+  likeCount.textContent = `${Number(likeCountValue) + 1} ${likesText}`;
+};
+
+export { renderMainList, renderNewLike };
