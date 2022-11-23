@@ -223,3 +223,77 @@ h5 {
     margin: 77px 22vw;
   }
 } */
+
+/* Item details */
+
+.popup-section {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(4px);
+}
+
+.popup {
+  width: 40%;
+  height: 85%;
+  margin: 60px auto;
+  background-color: #fff;
+  border: 1px solid grey;
+  padding: 16px 24px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cross-icon {
+  margin-right: 0;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.book {
+  border: 1px solid #000;
+  width: 100%;
+  height: 300px;
+}
+
+.book-title {
+  text-align: center;
+}
+
+.book-detail {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hide {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.cross-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.book-img {
+  width: 80%;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.description {
+  padding: 0 35px;
+}
