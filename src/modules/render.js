@@ -1,8 +1,13 @@
 import showPopup from './showPopup.js';
+import Comment from './commentAPI.js';
+import CommentUI from './commentUI.js'; 
+import commentsCounter from './commentsCounter.js';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
+
+const comment = new Comment();
 
 const LIKES_COUNT = 5;
 
@@ -59,16 +64,16 @@ const renderMainList = (ebookList) => {
     ebookLikeCount.textContent = `${LIKES_COUNT} likes`;
     ebookContentRight.appendChild(ebookLikeCount);
 
-    const contactButtonDiv = document.createElement('div');
-    contactButtonDiv.className = 'contact-button-div';
-    contentDiv.appendChild(contactButtonDiv);
+    const commentButtonDiv = document.createElement('div');
+    commentButtonDiv.className = 'contact-button-div';
+    contentDiv.appendChild(commentButtonDiv);
 
     const popupSection = document.querySelector('.popup-section');
     const popup = document.querySelector('.popup');
 
-    const contactButton = document.createElement('button');
-    contactButton.classList = 'contact-button';
-    contactButton.addEventListener('click', async (e) => {
+    const commentButton = document.createElement('button');
+    commentButton.classList = 'contact-button';
+    commentButton.addEventListener('click', async (e) => {
       e.preventDefault();
       popupSection.classList.toggle('hide');
       popup.insertAdjacentHTML('beforeend', showPopup(ebook));
@@ -77,9 +82,35 @@ const renderMainList = (ebookList) => {
         popupSection.classList.toggle('hide');
         popup.innerHTML = '';
       });
+
+      // display comments
+      const commentsArray = await comment.getComment(ebook.trackId);
+      popup.insertAdjacentHTML('beforeend', CommentUI.commentSection());
+      popup.insertAdjacentHTML('beforeend', CommentUI.commentsContainer(commentsArray)); // displaying comments list
+
+      const commentList = document.querySelector('.comment-list');
+      const counterElement = document.querySelector('.comments-count');
+      counterElement.innerHTML = commentsCounter();
+
+      // add comments
+      popup.insertAdjacentHTML('beforeend', CommentUI.addComment());
+
+      const userName = document.getElementById('user-name');
+      const userComment = document.getElementById('user-comment');
+      const form = document.getElementById('comment-form');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await comment.postComment(ebook.trackId, userName.value, userComment.value);
+        const commentsArray = await comment.getComment(ebook.trackId);
+        commentList.innerHTML = CommentUI.showComments(commentsArray);
+        counterElement.innerHTML = commentsCounter();
+        userName.value = '';
+        userComment.value = '';
+      });
     });
-    contactButton.textContent = 'Comments';
-    contactButtonDiv.appendChild(contactButton);
+    commentButton.textContent = 'Comments';
+    commentButtonDiv.appendChild(commentButton);
   });
 };
 

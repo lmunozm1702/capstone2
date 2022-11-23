@@ -10,8 +10,6 @@ const showPopup = (ebook) => {
   <div class="book-detail">
     <p><b>Author:</b> ${ebook.artistName}</p>
     <p><b>Price:</b> ${ebook.price}$</p>
-  </div>
-  <div class="description">
     <p><b>Description:</b> ${ebook.description}</p>
   </div>
   </div>`;
