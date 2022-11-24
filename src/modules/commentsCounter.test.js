@@ -1,4 +1,4 @@
-import commentsCounter from "./commentsCounter.js";
+import commentsCounter from './commentsCounter.js';
 
 describe('Tests for presence of comments', () => {
   test('Should be 0 if no comment is present', () => {
