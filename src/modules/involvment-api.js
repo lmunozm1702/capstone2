@@ -31,7 +31,7 @@ const getComment = async (itemId) => {
 };
 
 const getAppLikes = async () => {
-  const response = await fetch(`${API_URL}/apps/${APP_ID}/likes/`, {
+  const response = await fetch(`${API_URL}/apps/${process.env.API_KEY}/likes/`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const getAppLikes = async () => {
 };
 
 const setAppLike = async (trackId) => {
-  const response = await fetch(`${API_URL}/apps/${APP_ID}/likes/`, {
+  const response = await fetch(`${API_URL}/apps/${process.env.API_KEY}/likes/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
