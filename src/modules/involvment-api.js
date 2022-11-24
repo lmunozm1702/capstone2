@@ -12,9 +12,7 @@ const postComment = async (itemId, name, message) => {
     headers: {
       'Content-Type': 'application/json',
     },
-  })
-    .then((res) => res.json())
-    .catch((error) => error);
+  });
   const responseText = await response.text();
   return responseText;
 };
@@ -25,9 +23,7 @@ const getComment = async (itemId) => {
     headers: {
       'Content-type': 'application/json',
     },
-  })
-    .then((res) => res.json())
-    .catch((error) => error);
+  });
   if (response.status === 200) {
     const responseJSON = await response.json();
     return responseJSON;
