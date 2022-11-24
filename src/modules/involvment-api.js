@@ -76,4 +76,6 @@ const setAppLike = async (trackId) => {
   return (false);
 };
 
-export { getAppLikes, setAppLike, postComment, getComment };
+export {
+  getAppLikes, setAppLike, postComment, getComment,
+};
