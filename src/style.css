@@ -197,8 +197,7 @@ h5 {
   }
 }
 
-.contact-button,
-.btn-comment {
+.contact-button {
   padding: 1vh 3vh;
   background-color: white;
   border: 2px solid tomato;
@@ -207,7 +206,11 @@ h5 {
 }
 
 .btn-comment {
-  width: 100px;
+  padding: 1vh 3vh;
+  background-color: white;
+  border: 2px solid tomato;
+  border-radius: 4px;
+  font-size: 2vh;
 }
 
 .contact-button:hover,
@@ -243,8 +246,8 @@ h5 {
 }
 
 .popup {
-  width: 40%;
-  height: 85%;
+  width: calc(100vw - 20%);
+  height: calc(100vh - 20%);
   margin: 60px auto;
   background-color: #fff;
   border: 1px solid grey;
@@ -317,13 +320,6 @@ h5 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.comment-container {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-  align-items: center;
 }
 
 /* add comment */
