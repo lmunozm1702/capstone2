@@ -59,7 +59,7 @@ const showPopup = async (ebook) => {
   const commentsArray = await getComment(ebook.trackId);
   commentsArray.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date));
 
-  //displaying comments
+  // displaying comments
   const allComments = `<div class="comment-list">${showComments(commentsArray)}</div>`;
   popup.insertAdjacentHTML('beforeend', allComments);
 
