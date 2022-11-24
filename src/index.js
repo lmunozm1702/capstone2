@@ -9,7 +9,7 @@ window.addEventListener('load', async () => {
   await likesList.getLikes();
   const ebookList = await getEbooksList();
   if (ebookList) {
-    renderMainList(ebookList, likesList);
+    renderMainList(ebookList, likesList, ['9020', '9031', '9003']);
     return true;
   }
   return false;

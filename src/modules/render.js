@@ -1,39 +1,31 @@
-import showPopup from './showPopup.js';
+import _ from 'lodash';
 import '@fortawesome/fontawesome-free/js/fontawesome.js';
 import '@fortawesome/fontawesome-free/js/solid.js';
 import '@fortawesome/fontawesome-free/js/regular.js';
 import '@fortawesome/fontawesome-free/js/brands.js';
+import commentsCounter from './commentsCounter.js';
+import { postComment, getComment } from './involvment-api.js';
 
-const renderMainList = (ebookList, likesList) => {
-  import '@fortawesome/fontawesome-free/js/fontawesome';
-  import '@fortawesome/fontawesome-free/js/solid';
-  import '@fortawesome/fontawesome-free/js/regular';
-  import '@fortawesome/fontawesome-free/js/brands';
-  import commentsCounter from './commentsCounter.js';
-  import { postComment, getComment } from './involvment-api.js';
-
-  const LIKES_COUNT = 5;
-
-  const showComments = (commentData) => {
-    let comments = '';
-    commentData.forEach((element) => {
-      comments += `<div class="comment-container">
+const showComments = (commentData) => {
+  let comments = '';
+  commentData.forEach((element) => {
+    comments += `<div class="comment-container">
     <p>
       <span class="comment-date">${element.creation_date}</span>
       <span class="comment-name">${element.username}: </span>
       <span class="comment-content">${element.comment}</span>
     </p>
   </div>`;
-    });
-    return comments;
-  };
+  });
+  return comments;
+};
 
-  const showPopup = async (ebook) => {
-    const popupSection = document.querySelector('.popup-section');
-    const popup = document.querySelector('.popup');
+const showPopup = async (ebook) => {
+  const popupSection = document.querySelector('.popup-section');
+  const popup = document.querySelector('.popup');
 
-    popupSection.classList.toggle('hide');
-    const bookDetails = `<div class="item-details">
+  popupSection.classList.toggle('hide');
+  const bookDetails = `<div class="item-details">
   <div class="cross-icon">
   <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="">
   </div>
@@ -47,31 +39,31 @@ const renderMainList = (ebookList, likesList) => {
     <p><b>Description:</b> ${ebook.description}</p>
   </div>
   </div>`;
-    popup.insertAdjacentHTML('beforeend', bookDetails);
+  popup.insertAdjacentHTML('beforeend', bookDetails);
 
-    const crossIcon = document.querySelector('.cross-icon');
-    crossIcon.addEventListener('click', () => {
-      popupSection.classList.toggle('hide');
-      popup.innerHTML = '';
-    });
+  const crossIcon = document.querySelector('.cross-icon');
+  crossIcon.addEventListener('click', () => {
+    popupSection.classList.toggle('hide');
+    popup.innerHTML = '';
+  });
 
-    // comments section
-    const commentsHeader = `<div class="comments">
+  // comments section
+  const commentsHeader = `<div class="comments">
     <h2 class="comments-heading">Comments</h2>
     <h2 class="comments-num">(<span class="comments-count">0</span>)</h2>
   </div>`;
-    popup.insertAdjacentHTML('beforeend', commentsHeader);
+  popup.insertAdjacentHTML('beforeend', commentsHeader);
 
-    // getting comments
-    const commentsArray = await getComment(ebook.trackId);
-    commentsArray.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date));
+  // getting comments
+  const commentsArray = await getComment(ebook.trackId);
+  commentsArray.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date));
 
-    // displaying comments
-    const allComments = `<div class="comment-list">${showComments(commentsArray)}</div>`;
-    popup.insertAdjacentHTML('beforeend', allComments);
+  // displaying comments
+  const allComments = `<div class="comment-list">${showComments(commentsArray)}</div>`;
+  popup.insertAdjacentHTML('beforeend', allComments);
 
-    // add comments
-    const addCommentBox = `<div class="add-comment">
+  // add comments
+  const addCommentBox = `<div class="add-comment">
   <h2 class="text-center">Add a comment</h2>
   <form action="" id="comment-form">
     <input type="text" id="user-name" placeholder="Your name" required>
@@ -79,30 +71,36 @@ const renderMainList = (ebookList, likesList) => {
     <button type="submit" class="btn-comment">Comment</button>
   </form>
   </div>`;
-    popup.insertAdjacentHTML('beforeend', addCommentBox);
+  popup.insertAdjacentHTML('beforeend', addCommentBox);
 
-    const commentList = document.querySelector('.comment-list');
-    const counterElement = document.querySelector('.comments-count');
+  const commentList = document.querySelector('.comment-list');
+  const counterElement = document.querySelector('.comments-count');
+  counterElement.innerHTML = commentsCounter();
+
+  const userName = document.getElementById('user-name');
+  const userComment = document.getElementById('user-comment');
+  const form = document.getElementById('comment-form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await postComment(ebook.trackId, userName.value, userComment.value);
+    const commentsArray = await getComment(ebook.trackId);
+    commentList.innerHTML = showComments(commentsArray);
     counterElement.innerHTML = commentsCounter();
+    userName.value = '';
+    userComment.value = '';
+  });
+};
 
-    const userName = document.getElementById('user-name');
-    const userComment = document.getElementById('user-comment');
-    const form = document.getElementById('comment-form');
+const renderMainList = (ebookList, likesList, genresList, filterCode = '') => {
+  const ebookListDiv = document.querySelector('#ebook-list');
+  let genresExists = [];
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      await postComment(ebook.trackId, userName.value, userComment.value);
-      const commentsArray = await getComment(ebook.trackId);
-      commentList.innerHTML = showComments(commentsArray);
-      counterElement.innerHTML = commentsCounter();
-      userName.value = '';
-      userComment.value = '';
-    });
-  };
+  ebookList.results.forEach((ebook) => {
+    const intersectionResult = _.intersection(genresList, ebook.genreIds);
+    genresExists = [...genresExists, ...intersectionResult];
 
-  const renderMainList = (ebookList) => {
-    const ebookListDiv = document.querySelector('#ebook-list');
-    ebookList.results.forEach((ebook) => {
+    if ((intersectionResult !== []) || (filterCode === '')) {
       const ebookItem = document.createElement('div');
       ebookItem.className = 'ebook-item';
       ebookListDiv.appendChild(ebookItem);
@@ -175,32 +173,33 @@ const renderMainList = (ebookList, likesList) => {
 
       const commentButton = document.createElement('button');
       commentButton.classList = 'contact-button';
-
       commentButton.onclick = () => {
         showPopup(ebook);
       };
       commentButton.textContent = 'Comments';
       commentButtonDiv.appendChild(commentButton);
-    });
-  };
-
-  const renderNewLike = (trackId) => {
-    const likeCount = document.querySelector(`#like-count-${trackId}`);
-    const heartIcon = document.querySelector(`#ebook-like-${trackId}`);
-    let likeCountValue = '0';
-    let likesText;
-    [likeCountValue, likesText] = likeCount.textContent.split(' ');
-
-    likesText = 'likes.';
-    if (Number(likeCountValue) === '0') {
-      heartIcon.className = 'heart-icon-grey';
-    } else {
-      heartIcon.className = 'heart-icon';
-      if (likeCountValue === '0') {
-        likesText = 'like.';
-      }
     }
-    likeCount.textContent = `${Number(likeCountValue) + 1} ${likesText}`;
-  };
+  });
+  return (genresExists.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map()));
+};
 
-  export { renderMainList, renderNewLike };
+const renderNewLike = (trackId) => {
+  const likeCount = document.querySelector(`#like-count-${trackId}`);
+  const heartIcon = document.querySelector(`#ebook-like-${trackId}`);
+  let likeCountValue = '0';
+  let likesText;
+  [likeCountValue, likesText] = likeCount.textContent.split(' ');
+
+  likesText = 'likes.';
+  if (Number(likeCountValue) === '0') {
+    heartIcon.className = 'heart-icon-grey';
+  } else {
+    heartIcon.className = 'heart-icon';
+    if (likeCountValue === '0') {
+      likesText = 'like.';
+    }
+  }
+  likeCount.textContent = `${Number(likeCountValue) + 1} ${likesText}`;
+};
+
+export { renderMainList, renderNewLike };
