@@ -13,7 +13,7 @@ module.exports = {
       title: 'Output Management',
       template: './src/index.html',
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
   output: {
     filename: 'main.js',
