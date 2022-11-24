@@ -2,6 +2,7 @@ import './style.css';
 import getEbooksList from './modules/itunes-api.js';
 import { renderMainList, markAsSelected } from './modules/render.js';
 import Likes from './modules/likes.js';
+import filterResults from './modules/mainViewCounters.js';
 
 const likesList = new Likes();
 const allMenuItem = document.querySelector('#all');
@@ -21,19 +22,19 @@ window.addEventListener('load', async () => {
     });
 
     historyMenuItem.addEventListener('click', () => {
-      const newArray = ebookList.results.filter((item) => item.genreIds.includes('9031'));
+      const newArray = filterResults(ebookList.results, '9031');
       renderMainList(newArray, likesList, []);
       markAsSelected('#history', newArray.length);
     });
 
     literatureMenuItem.addEventListener('click', () => {
-      const newArray = ebookList.results.filter((item) => item.genreIds.includes('9020'));
+      const newArray = filterResults(ebookList.results, '9020');
       renderMainList(newArray, likesList, []);
       markAsSelected('#literature', newArray.length);
     });
 
     businessMenuItem.addEventListener('click', () => {
-      const newArray = ebookList.results.filter((item) => item.genreIds.includes('9003'));
+      const newArray = filterResults(ebookList.results, '9003');
       renderMainList(newArray, likesList);
       markAsSelected('#business', newArray.length);
     });
