@@ -10,7 +10,7 @@ const LIKES_COUNT = 5;
 const showComments = (commentData) => {
   let comments = '';
   commentData.forEach((element) => {
-    comments += `<div class="comment-container text-center">
+    comments += `<div class="comment-container">
     <p>
       <span class="comment-date">${element.creation_date}</span>
       <span class="comment-name">${element.username}: </span>
