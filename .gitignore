@@ -5,3 +5,4 @@ node_modules/
 eslint.txt
 hintrc.txt
 stylelint.txt
+.env

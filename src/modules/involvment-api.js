@@ -1,8 +1,7 @@
 const API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
-const APP_ID = 'I9KopyiRu6EGqX9RJk9q';
 
 const postComment = async (itemId, name, message) => {
-  const response = await fetch(`${API_URL}/apps/${APP_ID}/comments`, {
+  const response = await fetch(`${API_URL}/apps/${process.env.API_KEY}/comments`, {
     method: 'POST',
     body: JSON.stringify({
       item_id: itemId,
@@ -18,7 +17,7 @@ const postComment = async (itemId, name, message) => {
 };
 
 const getComment = async (itemId) => {
-  const response = await fetch(`${API_URL}/apps/${APP_ID}/comments?item_id=${itemId}`, {
+  const response = await fetch(`${API_URL}/apps/${process.env.API_KEY}/comments?item_id=${itemId}`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
@@ -32,7 +31,7 @@ const getComment = async (itemId) => {
 };
 
 const getAppLikes = async () => {
-  const response = await fetch(`${API_URL}/apps/${APP_ID}/likes/`, {
+  const response = await fetch(`${API_URL}/apps/${process.env.API_KEY}/likes/`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +52,7 @@ const getAppLikes = async () => {
 };
 
 const setAppLike = async (trackId) => {
-  const response = await fetch(`${API_URL}/apps/${APP_ID}/likes/`, {
+  const response = await fetch(`${API_URL}/apps/${process.env.API_KEY}/likes/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
