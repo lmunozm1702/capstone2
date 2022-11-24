@@ -25,6 +25,10 @@ nav ul {
   list-style: none;
 }
 
+li {
+  white-space: nowrap;
+}
+
 nav ul li a {
   text-decoration: none;
   color: white;
@@ -297,6 +301,10 @@ h5 {
   display: none;
 }
 
+.show {
+  display: inline;
+}
+
 .text-center {
   text-align: center;
 }
@@ -364,4 +372,31 @@ textarea:focus {
   .popup {
     width: calc(100vw - 20%);
   }
+}
+
+.nav-selected {
+  border-bottom: 4px solid grey;
+  border-radius: 4px;
+}
+
+.nav-unselected {
+  border: none;
+}
+
+.badge {
+  position: relative;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  min-width: 10px;
+  padding: 0.4vw 0.7vw;
+  font-size: 1vw;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: grey;
+  border-radius: 50%;
+  margin-bottom: 2px;
 }

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { getAppLikes, setAppLike } from './involvment-api.js';
-import { renderNewLike } from './render';
+import { renderNewLike } from './render.js';
 
 class Likes {
   constructor(likesList = []) {

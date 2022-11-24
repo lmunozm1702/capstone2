@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import '@fortawesome/fontawesome-free/js/fontawesome.js';
 import '@fortawesome/fontawesome-free/js/solid.js';
 import '@fortawesome/fontawesome-free/js/regular.js';
@@ -92,95 +91,91 @@ const showPopup = async (ebook) => {
   });
 };
 
-const renderMainList = (ebookList, likesList, genresList, filterCode = '') => {
+const renderMainList = (ebookList, likesList) => {
   const ebookListDiv = document.querySelector('#ebook-list');
-  let genresExists = [];
 
-  ebookList.results.forEach((ebook) => {
-    const intersectionResult = _.intersection(genresList, ebook.genreIds);
-    genresExists = [...genresExists, ...intersectionResult];
+  ebookListDiv.textContent = '';
 
-    if ((intersectionResult !== []) || (filterCode === '')) {
-      const ebookItem = document.createElement('div');
-      ebookItem.className = 'ebook-item';
-      ebookListDiv.appendChild(ebookItem);
+  ebookList.forEach((ebook) => {
+    const ebookItem = document.createElement('div');
+    ebookItem.className = 'ebook-item';
+    ebookListDiv.appendChild(ebookItem);
 
-      const ebookImageDiv = document.createElement('div');
-      ebookImageDiv.className = 'ebook-image-div';
+    const ebookImageDiv = document.createElement('div');
+    ebookImageDiv.className = 'ebook-image-div';
 
-      const ebookImage = document.createElement('img');
-      const imageResized = ebook.artworkUrl100.replace('100x100', '250x250');
-      ebookImage.src = imageResized;
-      ebookImage.className = 'ebook-image';
-      ebookImageDiv.appendChild(ebookImage);
-      ebookItem.appendChild(ebookImageDiv);
+    const ebookImage = document.createElement('img');
+    const imageResized = ebook.artworkUrl100.replace('100x100', '250x250');
+    ebookImage.src = imageResized;
+    ebookImage.className = 'ebook-image';
+    ebookImageDiv.appendChild(ebookImage);
+    ebookItem.appendChild(ebookImageDiv);
 
-      const contentDiv = document.createElement('div');
-      contentDiv.className = 'content-div';
-      ebookItem.appendChild(contentDiv);
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'content-div';
+    ebookItem.appendChild(contentDiv);
 
-      const ebookContentLeft = document.createElement('div');
-      ebookContentLeft.className = 'content-left';
-      contentDiv.appendChild(ebookContentLeft);
+    const ebookContentLeft = document.createElement('div');
+    ebookContentLeft.className = 'content-left';
+    contentDiv.appendChild(ebookContentLeft);
 
-      const ebookListTitle = document.createElement('div');
-      ebookListTitle.className = 'ebook-list-title';
-      ebookListTitle.textContent = ebook.trackName;
-      ebookContentLeft.appendChild(ebookListTitle);
+    const ebookListTitle = document.createElement('div');
+    ebookListTitle.className = 'ebook-list-title';
+    ebookListTitle.textContent = ebook.trackName;
+    ebookContentLeft.appendChild(ebookListTitle);
 
-      const ebookListAuthor = document.createElement('div');
-      ebookListAuthor.className = 'ebook-list-author';
-      ebookListAuthor.textContent = `by ${ebook.artistName}`;
-      ebookContentLeft.appendChild(ebookListAuthor);
+    const ebookListAuthor = document.createElement('div');
+    ebookListAuthor.className = 'ebook-list-author';
+    ebookListAuthor.textContent = `by ${ebook.artistName}`;
+    ebookContentLeft.appendChild(ebookListAuthor);
 
-      const ebookContentRight = document.createElement('div');
-      ebookContentRight.className = 'content-right';
-      contentDiv.appendChild(ebookContentRight);
+    const ebookContentRight = document.createElement('div');
+    ebookContentRight.className = 'content-right';
+    contentDiv.appendChild(ebookContentRight);
 
-      const trackId = ebook.trackId.toString();
-      const likesCount = likesList.getEbookLikes(trackId);
+    const trackId = ebook.trackId.toString();
+    const likesCount = likesList.getEbookLikes(trackId);
 
-      const ebookLikeIcon = document.createElement('div');
-      if (likesCount > 0) {
-        ebookLikeIcon.className = 'heart-icon';
-      } else {
-        ebookLikeIcon.className = 'heart-icon-grey';
-      }
-      ebookLikeIcon.onclick = () => {
-        likesList.addLike(trackId);
-      };
-      ebookLikeIcon.id = `ebook-like-${trackId}`;
-      ebookContentRight.appendChild(ebookLikeIcon);
-
-      const heartIcon = document.createElement('i');
-      heartIcon.className = ' fa-solid fa-heart';
-      heartIcon.id = `heart-icon-${trackId}`;
-      ebookLikeIcon.appendChild(heartIcon);
-
-      const ebookLikeCount = document.createElement('div');
-      let likesLabel = 'likes.';
-      if (likesCount === '1') {
-        likesLabel = 'like.';
-      }
-      ebookLikeCount.className = 'ebook-like-count';
-      ebookLikeCount.id = `like-count-${trackId}`;
-      ebookLikeCount.textContent = `${likesCount} ${likesLabel}`;
-      ebookContentRight.appendChild(ebookLikeCount);
-
-      const commentButtonDiv = document.createElement('div');
-      commentButtonDiv.className = 'contact-button-div';
-      contentDiv.appendChild(commentButtonDiv);
-
-      const commentButton = document.createElement('button');
-      commentButton.classList = 'contact-button';
-      commentButton.onclick = () => {
-        showPopup(ebook);
-      };
-      commentButton.textContent = 'Comments';
-      commentButtonDiv.appendChild(commentButton);
+    const ebookLikeIcon = document.createElement('div');
+    if (likesCount > 0) {
+      ebookLikeIcon.className = 'heart-icon';
+    } else {
+      ebookLikeIcon.className = 'heart-icon-grey';
     }
+    ebookLikeIcon.onclick = () => {
+      likesList.addLike(trackId);
+    };
+    ebookLikeIcon.id = `ebook-like-${trackId}`;
+    ebookContentRight.appendChild(ebookLikeIcon);
+
+    const heartIcon = document.createElement('i');
+    heartIcon.className = ' fa-solid fa-heart';
+    heartIcon.id = `heart-icon-${trackId}`;
+    ebookLikeIcon.appendChild(heartIcon);
+
+    const ebookLikeCount = document.createElement('div');
+    let likesLabel = 'likes.';
+    if (likesCount === '1') {
+      likesLabel = 'like.';
+    }
+    ebookLikeCount.className = 'ebook-like-count';
+    ebookLikeCount.id = `like-count-${trackId}`;
+    ebookLikeCount.textContent = `${likesCount} ${likesLabel}`;
+    ebookContentRight.appendChild(ebookLikeCount);
+
+    const commentButtonDiv = document.createElement('div');
+    commentButtonDiv.className = 'contact-button-div';
+    contentDiv.appendChild(commentButtonDiv);
+
+    const commentButton = document.createElement('button');
+    commentButton.classList = 'contact-button';
+    commentButton.onclick = () => {
+      showPopup(ebook);
+    };
+    commentButton.textContent = 'Comments';
+    commentButtonDiv.appendChild(commentButton);
   });
-  return (genresExists.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map()));
+  return true;
 };
 
 const renderNewLike = (trackId) => {
@@ -202,4 +197,27 @@ const renderNewLike = (trackId) => {
   likeCount.textContent = `${Number(likeCountValue) + 1} ${likesText}`;
 };
 
-export { renderMainList, renderNewLike };
+const hideBadges = () => {
+  let allBadges = document.querySelectorAll('.nav-item');
+  allBadges.forEach((badge) => {
+    badge.className = 'nav-item nav-unselected';
+  });
+
+  allBadges = document.querySelectorAll('.nav-span');
+  allBadges.forEach((badge) => {
+    badge.className = 'nav-span hide';
+  });
+};
+
+const markAsSelected = (tagId, count) => {
+  const tagSpan = document.querySelector(`${tagId}-span`);
+  const tagLi = document.querySelector(`${tagId}-li`);
+  hideBadges();
+
+  tagSpan.textContent = count;
+  tagSpan.className = 'nav-span show badge';
+
+  tagLi.className = 'nav-item nav-selected';
+};
+
+export { renderMainList, renderNewLike, markAsSelected };
