@@ -178,8 +178,12 @@ h5 {
   font-style: italic;
 }
 
-.ebook-like-icon {
+.heart-icon {
   color: red;
+}
+
+.heart-icon-grey {
+  color: grey;
 }
 
 .ebook-like-count {
