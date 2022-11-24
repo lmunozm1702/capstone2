@@ -19,9 +19,11 @@ const showComments = (commentData) => {
   return comments;
 };
 
-const showPopup = async (ebook, popupSection) => {
+const showPopup = async (ebook) => {
+  const popupSection = document.querySelector('.popup-section');
   const popup = document.querySelector('.popup');
 
+  popupSection.classList.toggle('hide');
   const bookDetails = `<div class="item-details">
   <div class="cross-icon">
   <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="">
@@ -137,16 +139,12 @@ const renderMainList = (ebookList) => {
     commentButtonDiv.className = 'contact-button-div';
     contentDiv.appendChild(commentButtonDiv);
 
-    const popupSection = document.querySelector('.popup-section');
-
     const commentButton = document.createElement('button');
     commentButton.classList = 'contact-button';
 
-    commentButton.addEventListener('click', async (e) => {
-      e.preventDefault();
-      popupSection.classList.toggle('hide');
-      showPopup(ebook, popupSection);
-    });
+    commentButton.onclick = () => {
+      showPopup(ebook);
+    };
     commentButton.textContent = 'Comments';
     commentButtonDiv.appendChild(commentButton);
   });
