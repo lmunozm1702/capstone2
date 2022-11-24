@@ -1,3 +1,4 @@
+/* eslint-disable */
 const itResult = {
   "resultCount": 50,
   "results": [
