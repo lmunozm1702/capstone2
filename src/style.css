@@ -307,22 +307,6 @@ p {
   padding: 10px 40px;
 }
 
-/*
-.popup {
-  width: calc(100vw - 20%);
-  height: calc(100vh - 20%);
-  margin: 60px auto;
-  background-color: #fff;
-  border: 10px solid tomato;
-  border-radius: 10px;
-  padding: 16px 40px;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-*/
-
 .item-details {
   display: flex;
   flex-direction: column;
