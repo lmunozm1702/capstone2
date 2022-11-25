@@ -22,10 +22,10 @@ const showPopup = async (ebook) => {
 
   popupSection.classList.toggle('hide');
   const bookDetails = `<div class="cross-icon">
-  <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="">
+  <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="cross icon">
   </div>
   <div class="item-details">
-  <img src="${ebook.artworkUrl100.replace('100x100', '250x250')}" class="book-img" alt="">
+  <img src="${ebook.artworkUrl100.replace('100x100', '250x250')}" class="book-img" alt="${ebook.trackName}">
   <div class="book-title text-center">
   <h3>${ebook.trackName}</h3>
   </div>
@@ -56,9 +56,7 @@ const showPopup = async (ebook) => {
 
   // displaying comments
   let allComments = '<div class="comment-list">';
-  commentsArray.forEach((x) => {
-    allComments += showComments(x);
-  });
+  commentsArray.forEach((comment) => allComments += showComments(comment));
   allComments += '</div>';
   popup.insertAdjacentHTML('beforeend', allComments);
 
