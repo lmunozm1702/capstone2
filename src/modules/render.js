@@ -24,18 +24,18 @@ const showPopup = async (ebook) => {
   const popup = document.querySelector('.popup');
 
   popupSection.classList.toggle('hide');
-  const bookDetails = `<div class="item-details">
-  <div class="cross-icon">
+  const bookDetails = `<div class="cross-icon">
   <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="">
   </div>
-  <img src="${ebook.artworkUrl100.replace('100x100', '500x500')}" class="book-img" alt="">
+  <div class="item-details">
+  <img src="${ebook.artworkUrl100.replace('100x100', '250x250')}" class="book-img" alt="">
   <div class="book-title text-center">
-  <h2>${ebook.trackName}</h2>
+  <h3>${ebook.trackName}</h3>
   </div>
   <div class="book-detail">
     <p><b>Author:</b> ${ebook.artistName}</p>
     <p><b>Price:</b> ${ebook.price}$</p>
-    <p><b>Description:</b> ${ebook.description}</p>
+    <p id="popup-desc"><b>Description:</b> ${ebook.description}</p>
   </div>
   </div>`;
   popup.insertAdjacentHTML('beforeend', bookDetails);
@@ -48,8 +48,8 @@ const showPopup = async (ebook) => {
 
   // comments section
   const commentsHeader = `<div class="comments">
-    <h2 class="comments-heading">Comments</h2>
-    <h2 class="comments-num">(<span class="comments-count">0</span>)</h2>
+    <h4 class="comments-heading">Comments</h4>
+    <h4 class="comments-num"><span class="comments-count">0</span></h4>
   </div>`;
   popup.insertAdjacentHTML('beforeend', commentsHeader);
 
@@ -63,7 +63,7 @@ const showPopup = async (ebook) => {
 
   // add comments
   const addCommentBox = `<div class="add-comment">
-  <h2 class="text-center">Add a comment</h2>
+  <h4 class="text-center">Add a comment</h4>
   <form action="" id="comment-form">
     <input type="text" id="user-name" placeholder="Your name" required>
     <textarea name="comment" id="user-comment" cols="30" rows="10" placeholder="Your insights" required></textarea>
