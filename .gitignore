@@ -1,0 +1,8 @@
+node_modules/
+.hintrc
+.stylelintrc.json
+.eslintrc.json
+eslint.txt
+hintrc.txt
+stylelint.txt
+.env
