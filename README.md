@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# JavaScript Capstone - API-based webapp
+# 📖 JavaScript Capstone - API-based webapp
 
 > This JavaScript capstone project is built on [iTunes Search API](https://performance-partners.apple.com/search-api), an external API which is used to get the data of different ebooks, and an [Involvement API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270) which is used to record the user interactions including likes and comments. The project covers the following mentioned points:
 
@@ -9,7 +9,7 @@
 - _In the pop-up window user can see the author name, price, and description of the book._
 - _The application shows the number of books and number of likes and comments for each book._
 
-## Built With
+## 🛠 Built With
 
 - HTML & CSS
 - JavaScript (ES6)
@@ -17,8 +17,21 @@
 - Jest Testing Library
 - [HTML, CSS & JavaScript Linters](https://github.com/microverseinc/linters-config/tree/master/html-css-js)
 
+## 🚀 Live Demo
 
-## Getting Started
+> [Click here for live preview](https://lmunozm1702.github.io/capstone2/dist)
+
+## Kanban Board
+
+> [Link to the Kanban Board](https://github.com/lmunozm1702/capstone2/projects/1)
+
+## Pull Requests
+
+> [Pull Request 1](https://github.com/lmunozm1702/capstone2/pull/35)
+
+> [Pull Request 2](https://github.com/lmunozm1702/capstone2/pull/36)
+
+## 💻 Getting Started
 
 ### Prerequisites
 
@@ -46,7 +59,7 @@ To get a local copy, follow the steps below:
 - `npm run build`
 - `npm start`
 
-## Authors
+## 👥 Authors
 
 👤 **Luis Muñoz**
 
@@ -72,7 +85,7 @@ This project is [MIT](./LICENSE) licensed.
 
 ## Acknowledgement
 
-Task given by Microverse.
+We use the Lodash and Fontawesome NPM packages.
 
 ## Show your support
 
