@@ -18,13 +18,17 @@
 - [HTML, CSS & JavaScript Linters](https://github.com/microverseinc/linters-config/tree/master/html-css-js)
 
 ## 🚀 Live Demo
-> [Click here for live preview]
+
+> [Click here for live preview](https://lmunozm1702.github.io/capstone2/dist)
 
 ## Kanban Board
+
 > [Link to the Kanban Board](https://github.com/lmunozm1702/capstone2/projects/1)
 
 ## Pull Requests
+
 > [Pull Request 1](https://github.com/lmunozm1702/capstone2/pull/35)
+
 > [Pull Request 2](https://github.com/lmunozm1702/capstone2/pull/36)
 
 ## 💻 Getting Started
@@ -81,7 +85,7 @@ This project is [MIT](./LICENSE) licensed.
 
 ## Acknowledgement
 
-Task given by Microverse.
+We use the Lodash and Fontawesome NPM packages.
 
 ## Show your support
 
