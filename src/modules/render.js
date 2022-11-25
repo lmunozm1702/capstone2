@@ -86,7 +86,7 @@ const showPopup = async (ebook) => {
     postComment(ebook.trackId, userName.value, userComment.value);
     const commentObject = {};
     const date = new Date();
-    commentObject.creation_date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+    commentObject.creation_date = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     commentObject.username = userName.value;
     commentObject.comment = userComment.value;
 
