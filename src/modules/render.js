@@ -6,17 +6,14 @@ import commentsCounter from './commentsCounter.js';
 import { postComment, getComment } from './involvment-api.js';
 
 const showComments = (commentData) => {
-  let comments = '';
-  commentData.forEach((element) => {
-    comments += `<div class="comment-container">
-    <p>
-      <span class="comment-date">${element.creation_date}</span>
-      <span class="comment-name">${element.username}: </span>
-      <span class="comment-content">${element.comment}</span>
-    </p>
+  const comment = `<div class="comment-container">
+  <p>
+    <span class="comment-date">${commentData.creation_date}</span>
+    <span class="comment-name">${commentData.username}: </span>
+    <span class="comment-content">${commentData.comment}</span>
+  </p>
   </div>`;
-  });
-  return comments;
+  return comment;
 };
 
 const showPopup = async (ebook) => {
@@ -25,10 +22,10 @@ const showPopup = async (ebook) => {
 
   popupSection.classList.toggle('hide');
   const bookDetails = `<div class="cross-icon">
-  <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="">
+  <img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/cross-24-512.png" alt="cross icon">
   </div>
   <div class="item-details">
-  <img src="${ebook.artworkUrl100.replace('100x100', '250x250')}" class="book-img" alt="">
+  <img src="${ebook.artworkUrl100.replace('100x100', '250x250')}" class="book-img" alt="${ebook.trackName}">
   <div class="book-title text-center">
   <h3>${ebook.trackName}</h3>
   </div>
@@ -58,7 +55,11 @@ const showPopup = async (ebook) => {
   commentsArray.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date));
 
   // displaying comments
-  const allComments = `<div class="comment-list">${showComments(commentsArray)}</div>`;
+  let allComments = '<div class="comment-list">';
+  commentsArray.forEach((commentItem) => {
+    allComments += showComments(commentItem);
+  });
+  allComments += '</div>';
   popup.insertAdjacentHTML('beforeend', allComments);
 
   // add comments
@@ -82,9 +83,14 @@ const showPopup = async (ebook) => {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    await postComment(ebook.trackId, userName.value, userComment.value);
-    const commentsArray = await getComment(ebook.trackId);
-    commentList.innerHTML = showComments(commentsArray);
+    postComment(ebook.trackId, userName.value, userComment.value);
+    const commentObject = {};
+    const date = new Date();
+    commentObject.creation_date = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    commentObject.username = userName.value;
+    commentObject.comment = userComment.value;
+
+    commentList.insertAdjacentHTML('beforeend', showComments(commentObject));
     counterElement.innerHTML = commentsCounter();
     userName.value = '';
     userComment.value = '';
