@@ -114,7 +114,7 @@ p {
     flex-direction: column;
     margin: 5vh 2.5vh;
     padding: 5vh 2.5vh;
-    width: 43%;
+    width: 44%;
     justify-content: flex-start;
     gap: 0;
   }
@@ -128,7 +128,7 @@ p {
 
 @media only screen and (min-width: 1200px) {
   .ebook-item {
-    width: 22%;
+    width: 21%;
   }
 }
 
@@ -283,6 +283,18 @@ p {
   padding: 20px;
 }
 
+@media only screen and (min-width: 992px) {
+  .popup-section {
+    padding: 50px 100px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .popup-section {
+    padding: 100px 200px;
+  }
+}
+
 .popup {
   width: 100%;
   height: 100%;
@@ -390,9 +402,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: 5px;
-}
-
-.comment-container {
 }
 
 /* add comment */
