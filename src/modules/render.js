@@ -56,7 +56,9 @@ const showPopup = async (ebook) => {
 
   // displaying comments
   let allComments = '<div class="comment-list">';
-  commentsArray.forEach((comment) => allComments += showComments(comment));
+  commentsArray.forEach((comment) => {
+    allComments += showComments(comment);
+  });
   allComments += '</div>';
   popup.insertAdjacentHTML('beforeend', allComments);
 
