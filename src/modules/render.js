@@ -12,8 +12,8 @@ const showComments = (commentData) => {
     <span class="comment-name">${commentData.username}: </span>
     <span class="comment-content">${commentData.comment}</span>
   </p>
-</div>`;
-return comment;
+  </div>`;
+  return comment;
 };
 
 const showPopup = async (ebook) => {
@@ -84,10 +84,9 @@ const showPopup = async (ebook) => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     postComment(ebook.trackId, userName.value, userComment.value);
-    
     const commentObject = {};
     const date = new Date();
-    commentObject.creation_date = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+    commentObject.creation_date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
     commentObject.username = userName.value;
     commentObject.comment = userComment.value;
 
