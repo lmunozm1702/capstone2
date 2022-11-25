@@ -1,5 +1,5 @@
-import filterResults from './mainViewCounters.js';
-import itResult from './itunes-result.js';
+import filterResults from '../mainViewCounters.js';
+import itResult from '../itunes-result.js';
 
 describe('Test for ebooks counting', () => {
   test('Array with data and option matches', () => {
